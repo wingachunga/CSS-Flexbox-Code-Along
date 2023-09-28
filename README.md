@@ -1,5 +1,12 @@
-# Building a Responsive Layout with CSS Flexbox 
-## Problem Statement 
+# Building a Responsive Layout with CSS Flexbox
+
+## Learning Goals
+
+- Setting up a Flex Container.
+- Identify and Use Flex Properties.
+
+## Introduction
+
 Using CSS to create a website that looks good to as many users as possible can
 be a challenge. Your webpage may look great on the screen you designed it on,
 but if you open the page up on a small laptop, suddenly the page content is
@@ -18,14 +25,7 @@ them to _wrap_ to a new line cleanly.
 
 In this lesson, we will discuss some of the common ways to use flexbox and the
 associated properties you can use while coding through some examples. Feel free
-to code along using the provided `index.html` and `index.css` files. You can
-test out your page by either running `httpserver` if you are using the
-in-browser Learn IDE, or by right clicking the `index.html` in Finder and
-opening it in a browser.
-
-## Objectives
-1. Setting up a Flex Container
-2. Identify and Use Flex Properties
+to code along using the provided `index.html` and `index.css` files.
 
 ## Setting Up a Flex Container
 
@@ -43,7 +43,7 @@ flex` as a property here and set a width and height of the container. We can
 also set width and height to the full size of the window using `100vw`, and
 `100vh`, so our CSS block will look like this:
 
-```
+```css
 .flex-container {
   display: flex;
   width: 100vw;
@@ -52,6 +52,7 @@ also set width and height to the full size of the window using `100vw`, and
 ```
 
 ## Identify and Use Flex Properties
+
 Save `index.css` and check out `index.html` in your browser. Cool! We're taking
 some inspiration from nature today, and going with colors that look like you're
 oceanside. Looks like we're on our way! If you inspect the page, you'll see that
@@ -66,25 +67,25 @@ However, we've got a small issue--it doesn't make much sense to have a
 and bottom of our page. We'll need to add one more line of CSS for this using
 `flex-direction`.
 
-#### `flex-direction`
+### `flex-direction`
 
 By default, flexbox will display content horizontally. If we want to change
 this, we'll need to define a direction. In `index.css`, add the following line
-to `.flex-container`: 
+to `.flex-container`:
 
-```
+```css
 flex-direction: column;
 ```
 
 Refresh `index.html` to see the change. This time, our ivory `<header>` appears
-along the top of our page, with `<footer>` at the bottom! 
+along the top of our page, with `<footer>` at the bottom!
 
 The `flex-direction` property has a few setting options:
 
-* `row` - the default setting, organizes items from left to right
-* `column` - organizes items from top to bottom
-* `row-reverse` - organizes items from _right_ to _left_
-* `column-reverse` - organizes items from _bottom_ to _top_
+- `row` - the default setting, organizes items from left to right
+- `column` - organizes items from top to bottom
+- `row-reverse` - organizes items from _right_ to _left_
+- `column-reverse` - organizes items from _bottom_ to _top_
 
 Switching `flex-direction` to the `column-reverse` setting, for instance, will
 put our pale blue `<footer>` on top, and our ivory `<header>` on the bottom.
@@ -105,24 +106,24 @@ height. Similarly, footers usually contain static links and information, so we w
 set the height property in the `header` and `footer` CSS blocks to `80px`.
 
 Refresh the page and you'll see the effect: The `<main>` section will display as
-turqoise and tke up the majority of the page. If you shrink the height of your browser
-window, the height of `<main>` will change significantly. Our `<header>` and
-`<footer>` sections will still adjust in height a little, but we'll take a look
-at preventing that later on. Previously, to create this sort of layout, we would
-have added the `position` property to the individual `<header>` and `<footer>`
-elements, but with flexbox, the position is being handled by the _parent
-container_, applying to all of its children.
+turquoise and tke up the majority of the page. If you shrink the height of your
+browser window, the height of `<main>` will change significantly. Our `<header>`
+and `<footer>` sections will still adjust in height a little, but we'll take a
+look at preventing that later on. Previously, to create this sort of layout, we
+would have added the `position` property to the individual `<header>` and
+`<footer>` elements, but with flexbox, the position is being handled by the
+_parent container_, applying to all of its children.
 
 Now that we've set up a basic layout using flexbox, we can go deeper into some
 of its cool properties.
 
-#### `flex-wrap`
+### `flex-wrap`
 
 Let's display a series of items in the `<main>` section of our page. Make six
 `<div>` elements inside of `<main>` and assign them a class name 'item', adding
 the number 1 through 6 in them, like so:
 
-```
+```html
 <div class="item">1</div>
 <div class="item">2</div>
 <div class="item">3</div>
@@ -136,7 +137,7 @@ In our CSS file, define a block for `.item` with `height` and `width` set to
 the `main` CSS block, set `display` to `flex`. The two classes should look like
 the following:
 
-```
+```css
 main {
   display: flex;
   background-color: #FBFFF4;
@@ -156,7 +157,7 @@ If you refresh, you should see six pink boxes horizontally aligned. If you reduc
 the width of your browser window, these boxes will evenly shrink to fit. Go back
 into `index.css`, and in `.main`, add the following line:
 
-```
+```css
 flex-wrap: wrap;
 ```
 
@@ -174,14 +175,14 @@ Let's add in the previous property we discussed, `flex-direction`. If you add
 items, but instead of in a new line underneath, the items will appear in a new
 _column_ to the right of the first.
 
-#### `flex-flow`
+### `flex-flow`
 
 In our CSS block labeled `main`, we've now got `flex-direction` and `flex-wrap`
 defined. These two properties often go hand in hand, so CSS provides a shorthand
 property that defines both in one line: `flex-flow`. To implement this, in
 the block `main`, replace `flex-direction` and `flex-wrap` with the following:
 
-```
+```css
 flex-flow: column wrap;
 ```
 
@@ -195,14 +196,14 @@ positioning of the child divs with these two lines of CSS for the parent. For
 the next section, switch the direction back to `row` (so, either `flex-flow: row
 wrap;`, or just `flex-flow: wrap;`).
 
-#### justify-content
+### justify-content
 
 Now that we've got wrapping and direction set up, we can define where we want
 items positioned in more detail. The first property we will look at is
 `justify-content`, which will define where items start and end, and how they are
 spaced in between. In the `main` CSS block, add:
 
-```
+```css
 justify-content: center;
 ```
 
@@ -214,19 +215,19 @@ set up in short order.
 
 The `justify-content` property has a number of settings:
 
-* `center` - centers all elements while preserving the original spacing in-between
-each of them. 
-* `flex-start` - aligns all elements to the beginning of the container. This is
-the default setting, so we've actually already seen what this looks like. 
-* `flex-end` - aligns all elements to the end of the flex container. If you apply
+- `center` - centers all elements while preserving the original spacing in-between
+each of them.
+- `flex-start` - aligns all elements to the beginning of the container. This is
+the default setting, so we've actually already seen what this looks like.
+- `flex-end` - aligns all elements to the end of the flex container. If you apply
 this setting, our pink boxes will align to the right side of the screen.
 However, if the page shrinks, the last flex elements will still wrap to the next
 row, so order is preserved.
-* `space-around` - adds space in between each flex element so they fill the space
+- `space-around` - adds space in between each flex element so they fill the space
 they are in, evenly dividing the row and centering each element in each
 division. This white space in between will shrink as the page shrinks, and items
 will wrap when they no longer fit on the same row.
-* `space-between` - similar to `space-around`, except this time, the _first_ and
+- `space-between` - similar to `space-around`, except this time, the _first_ and
 _last_ flex elements on a row will be aligned to the beginning and end of the
 row, removing white space on the edges of the container. On a new row, the first
 and last elements will again align to the beginning and end.
@@ -235,13 +236,14 @@ If you change `flex-flow` back to `column wrap`, the flex elements will act the
 same way, _only vertically_, so `justify-content` will apply based on the
 `flex-direction` you've defined.
 
-#### `align-items`
+### `align-items`
 
 Centering vertically is actually fairly non-intuitive using basic CSS. Flexbox
 provides a solution, though, in the `align-items` property. In the `main` CSS
 block, make sure `flex-flow` is set to `row wrap` once again, and then add the
-following line: 
-```
+following line:
+
+```css
 align-items: center;
 ```
 
@@ -257,21 +259,37 @@ in the direction **perpendicular** to your `flex-direction` setting.
 Just like `justify-content`, the `align-items` property has a few different
 settings:
 
-* `center` - centers elements vertically if the `flex-direction` is set to `row`, and horizontally if the `flex-direction` is set to `column`.
-* `flex-start` - aligns elements to the top of the flex container if `flex-direction` is set to `row`, and to the left of the container if `flex-direction` is set to `column`.
-* `flex-end` - aligns elements to the bottom or right of the flex container, the opposite of `flex-start`.
-* `stretch` - Stretches elements to fit the container. Try this by setting `align-items` to `stretch`, then make sure `flex-flow` is set to `row wrap`, and in the `.item` CSS block, remove `height: 100px`. Each element will now stretch to fit the height of the flex container. The `stretch` setting will have the same effect on flex columns if you add back in the `height` property but remove `width: 100px`.
-* `baseline` - aligns elements based on the _text_ baseline inside each element. If you tried out the `stretch` setting, make sure your `flex-direction` is set back to `row` and that both `height` and `width` are set to `100px` in the `.item` CSS block. Now, set `align-items` to `baseline`, go to your `index.html` file and remove some of the numbers that are contained in our divs, leaving a few. Save both the HTML and CSS, and check out the page in your browser. Any div that is now empty is aligned normally, but any div that still has text in it will align _based on the bottom of the text_.
+- `center` - centers elements vertically if the `flex-direction` is set to
+  `row`, and horizontally if the `flex-direction` is set to `column`.
+- `flex-start` - aligns elements to the top of the flex container if
+  `flex-direction` is set to `row`, and to the left of the container if
+  `flex-direction` is set to `column`.
+- `flex-end` - aligns elements to the bottom or right of the flex container, the
+  opposite of `flex-start`.
+- `stretch` - Stretches elements to fit the container. Try this by setting
+  `align-items` to `stretch`, then make sure `flex-flow` is set to `row wrap`,
+  and in the `.item` CSS block, remove `height: 100px`. Each element will now
+  stretch to fit the height of the flex container. The `stretch` setting will
+  have the same effect on flex columns if you add back in the `height` property
+  but remove `width: 100px`.
+- `baseline` - aligns elements based on the _text_ baseline inside each element.
+  If you tried out the `stretch` setting, make sure your `flex-direction` is set
+  back to `row` and that both `height` and `width` are set to `100px` in the
+  `.item` CSS block. Now, set `align-items` to `baseline`, go to your
+  `index.html` file and remove some of the numbers that are contained in our
+  divs, leaving a few. Save both the HTML and CSS, and check out the page in
+  your browser. Any div that is now empty is aligned normally, but any div that
+  still has text in it will align _based on the bottom of the text_.
 
 To perfectly center an element horizontally and vertically, with flex, we can
 use a combination of both `justify-content` and `align-items` like so: 
 
-```
+```css
 justify-content: center;
 align-items: center;
 ```
 
-#### `align-content`
+### `align-content`
 
 The `align-content` property defines how multiple rows of elements will be
 displayed. The effects of `align-content` will not apply if `nowrap` is set, and
@@ -279,20 +297,26 @@ won't be visible until more than one row or column of flex content is present.
 Because of this, it is often best to use `align-content` in conjunction with
 `align-items`, giving you a more nuanced control over the effects of wrapping.
 
-* `center` - centers all rows in the container. Combined with `align-items: center`, this will keep all items and rows grouped together, instead of centering each row independently.
-* `stretch` - similar to `align-items: stretch` when multiple rows are present.
-* `space-around` - centers elements vertically on each row (or horizontally on each column) the same way as if you only used `align-items: center`.
-* `space-between` - similar to `justify-content: space-between`, if two rows of elements are present, the first row will align to the top of the container, and the second row will align to the bottom. Any additional rows will be evenly centered and spaced in between.
-* `flex-start` - aligns elements to the beginning of the flex container
-* `flex-end` - aligns elements to the end of the flex container
+- `center` - centers all rows in the container. Combined with `align-items:
+  center`, this will keep all items and rows grouped together, instead of
+  centering each row independently.
+- `stretch` - similar to `align-items: stretch` when multiple rows are present.
+- `space-around` - centers elements vertically on each row (or horizontally on
+  each column) the same way as if you only used `align-items: center`.
+- `space-between` - similar to `justify-content: space-between`, if two rows of
+  elements are present, the first row will align to the top of the container,
+  and the second row will align to the bottom. Any additional rows will be
+  evenly centered and spaced in between.
+- `flex-start` - aligns elements to the beginning of the flex container.
+- `flex-end` - aligns elements to the end of the flex container.
 
-### Setting Up Child Elements with Flex
+## Setting Up Child Elements with Flex
 
 So, we've gotten pretty far with flexbox just by defining properties on the
 container, but we can go even further by setting CSS properties within the
 children of the container.
 
-#### `flex-basis`
+### `flex-basis`
 
 So far, we've been setting the size of our child elements in a flex container by
 using the `width` and `height` properties. We can achieve the same effect using
@@ -302,11 +326,19 @@ flex container. Width, in this case, refers to the length of an element in the
 `flex-basis` affects the `height` of each element. There are a few settings for
 `flex-basis` we can use, allowing us to handle sizing in different ways:
 
-* `flex-basis: 100px;` - will give elements an initial width of `100px`, if the container is set to `row`, or an initial height of `100px`, if the container is set to `column`. Other units can be used here, such as `em`.
-* `flex-basis: --%` - will set the element to a percentage of a container size. Setting `flex-basis` to 50% on one child element, for instance, will cause that child to take up half of a container row. Set to 100%, the child will fill the entire row, causing it to wrap if there are other children in the flex container.
-* `flex-basis: content;` - will set the element's size based on the `width` or `height` properties if they are defined. Otherwise, the element will be sized based on the content inside the element.
+- `flex-basis: 100px;` - will give elements an initial width of `100px`, if the
+  container is set to `row`, or an initial height of `100px`, if the container
+  is set to `column`. Other units can be used here, such as `em`.
+- `flex-basis: --%` - will set the element to a percentage of a container size.
+  Setting `flex-basis` to 50% on one child element, for instance, will cause
+  that child to take up half of a container row. Set to 100%, the child will
+  fill the entire row, causing it to wrap if there are other children in the
+  flex container.
+- `flex-basis: content;` - will set the element's size based on the `width` or
+  `height` properties if they are defined. Otherwise, the element will be sized
+  based on the content inside the element.
 
-#### `flex-grow`
+### `flex-grow`
 
 The `flex-grow` property specifies how much space the element should take up
 within a flex container. By default, `flex-grow` is equal to `0`, meaning
@@ -330,7 +362,7 @@ create a variety of layouts. For instance, let's create a new CSS class,
 `setWidth`, with `flex-basis` set to `100px`, and `flex-grow` set to `1`, like
 so:
 
-```
+```css
 .setWidth {
   flex-basis: 100px;
   flex-grow: 1;
@@ -346,7 +378,7 @@ of the space, while all other boxes will fit evenly on their row.
 If no divs have a set width, but have `flex-grow` set greater than `0`, elements
 _will not_ wrap, instead, shrinking to fit all into one row.
 
-#### `flex-shrink`
+### `flex-shrink`
 
 The `flex-shrink` property determines how much an element in a flex container will
 shrink; the larger the number, the more the element will shrink in relation to
@@ -366,9 +398,10 @@ now cause the `<footer>` to shrink much more than before until it disappears
 entirely. Setting `flex-shrink` to `3` causes the `<footer>` to shrink _3_ times
 as much as normal.
 
-#### `flex`
+### `flex`
 
 Using `flex-grow`, `flex-shrink`, and `flex-basis` in combination allows us to:
+
 1. Set how much that element expands to fill space
 2. Set how much the element will shrink to fit
 3. Set how large the item is to start
@@ -377,24 +410,29 @@ These three settings tend to go together, and because of this, CSS has provided
 a shorthand alternative to set all three: `flex`. The `flex` attribute can take
 three settings:
 
-```
+```css
 flex: <flex-grow value> <flex-shrink value> <flex-basis value>
 ```
 
 Alternatively, you can also use `auto`, `initial` and `none`:
 
-* `flex: auto` - equal to `flex-grow: 1; flex-shrink: 1; flex-basis: content;`, elements set to this will grow and shrink evenly to fit the container.
-* `flex: initial` - equal to `flex-grow: 0; flex-shrink: 1; flex-basis: content;`, elements with this settings will shrink to fit, but will not grow beyond their set width or the size of their content.
-* `flex: none` - will prevent shrinking and growing, keeping elements to a set size or the size of their content.
-* `flex: 1` - or any value greater than `0` - will act the same as `flex-grow: 1`.
-* `flex: 100px` - or any valid width - will act the same as `flex-basis: 100px`.
+- `flex: auto` - equal to `flex-grow: 1; flex-shrink: 1; flex-basis: content;`,
+  elements set to this will grow and shrink evenly to fit the container.
+- `flex: initial` - equal to `flex-grow: 0; flex-shrink: 1; flex-basis:
+  content;`, elements with this settings will shrink to fit, but will not grow
+  beyond their set width or the size of their content.
+- `flex: none` - will prevent shrinking and growing, keeping elements to a set
+  size or the size of their content.
+- `flex: 1` - or any value greater than `0` - will act the same as `flex-grow:
+  1`.
+- `flex: 100px` - or any valid width - will act the same as `flex-basis: 100px`.
 
 It is recommended that you use `flex` over the individual `grow`, `shrink` and
 `basis` properties. Since `flex` automatically handles some of the settings if
 they aren't provided, it is less prone to conflicting behavior. Try assigning
 our pink boxes different values for `flex` to see how they work.
 
-#### `align-self`
+### `align-self`
 
 Flexbox offers a way for us to change individual element positions, in the event
 that we want one or more elements in a flex container to be positioned
@@ -404,7 +442,7 @@ take a look at it in browser, we will see that while that pink box will remain
 in order relative to other boxes, it will appear at the bottom of the flex
 container, while all others remain at the top.
 
-#### `order`
+### `order`
 
 Flexbox has one property which is slightly different than the rest: `order`. The
 `order` takes in a positive or negative number value, and will cause flex
@@ -422,12 +460,7 @@ using `order` in conjunction with [`@media`](https://developer.mozilla.org/en-US
 It should be noted that modifying the order of elements may negatively affect
 users who use assistive technology such as screen readers.
 
-## Moving On
-
-When you're ready to leave this lab, run `learn` from the command line. If the
-test pass, enter `learn submit`. You'll then be prompted to move on!
-
-### Conclusion
+## Conclusion
 
 That covers all the properties of flexbox, but feel free to continue to practice
 with various settings. It is possible to use flexbox to create very unique page
