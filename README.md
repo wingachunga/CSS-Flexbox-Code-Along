@@ -106,7 +106,7 @@ height. Similarly, footers usually contain static links and information, so we w
 set the height property in the `header` and `footer` CSS blocks to `80px`.
 
 Refresh the page and you'll see the effect: The `<main>` section will display as
-turquoise and tke up the majority of the page. If you shrink the height of your
+turquoise and take up the majority of the page. If you shrink the height of your
 browser window, the height of `<main>` will change significantly. Our `<header>`
 and `<footer>` sections will still adjust in height a little, but we'll take a
 look at preventing that later on. Previously, to create this sort of layout, we
@@ -155,20 +155,20 @@ main {
 
 If you refresh, you should see six pink boxes horizontally aligned. If you reduce
 the width of your browser window, these boxes will evenly shrink to fit. Go back
-into `index.css`, and in `.main`, add the following line:
+into `index.css`, and in `main`, add the following line:
 
 ```css
 flex-wrap: wrap;
 ```
 
-Now, if you refresh the browser, grow and shrink the window, the boxes will stay
-100 pixels wide, _and 'wrap' to a new line_ one by one when there is no more
-space to fit! The `flex-wrap` property defines how items in a flex container
-handle positioning when there are too many items to fit the space. By default,
-`flex-wrap` is set to `nowrap`, which is what we saw initially. You can also try
-changing `flex-wrap` to `wrap-reverse`, which will act similar to `wrap`, except
-from the _bottom and up_, instead of top and down. We'll keep the property set
-to `wrap` for now, though.
+Now, if you refresh the browser and grow and shrink the window, the boxes will
+stay 100 pixels wide, _and 'wrap' to a new line_ one by one when there is no
+more space to fit! The `flex-wrap` property defines how items in a flex
+container handle positioning when there are too many items to fit the space. By
+default, `flex-wrap` is set to `nowrap`, which is what we saw initially. You can
+also try changing `flex-wrap` to `wrap-reverse`, which will act similar to
+`wrap`, except from the _bottom and up_, instead of top and down. We'll keep the
+property set to `wrap` for now, though.
 
 Let's add in the previous property we discussed, `flex-direction`. If you add
 `flex-direction: column` to the `main` CSS block, flexbox will still _wrap_
@@ -270,8 +270,8 @@ settings:
   `align-items` to `stretch`, then make sure `flex-flow` is set to `row wrap`,
   and in the `.item` CSS block, remove `height: 100px`. Each element will now
   stretch to fit the height of the flex container. The `stretch` setting will
-  have the same effect on flex columns if you add back in the `height` property
-  but remove `width: 100px`.
+  have the same effect on flex columns if you set `flex-flow` to `column wrap`,
+  add back in the `height` property, and remove `width: 100px`.
 - `baseline` - aligns elements based on the _text_ baseline inside each element.
   If you tried out the `stretch` setting, make sure your `flex-direction` is set
   back to `row` and that both `height` and `width` are set to `100px` in the
@@ -416,10 +416,10 @@ flex: <flex-grow value> <flex-shrink value> <flex-basis value>
 
 Alternatively, you can also use `auto`, `initial` and `none`:
 
-- `flex: auto` - equal to `flex-grow: 1; flex-shrink: 1; flex-basis: content;`,
+- `flex: auto` - equal to `flex-grow: 1; flex-shrink: 1; flex-basis: auto;`,
   elements set to this will grow and shrink evenly to fit the container.
 - `flex: initial` - equal to `flex-grow: 0; flex-shrink: 1; flex-basis:
-  content;`, elements with this settings will shrink to fit, but will not grow
+  auto;`, elements with this setting will shrink to fit, but will not grow
   beyond their set width or the size of their content.
 - `flex: none` - will prevent shrinking and growing, keeping elements to a set
   size or the size of their content.
@@ -464,7 +464,7 @@ users who use assistive technology such as screen readers.
 
 That covers all the properties of flexbox, but feel free to continue to practice
 with various settings. It is possible to use flexbox to create very unique page
-layouts, recreate some of the awesome modern layouts we see (i.g. the dynamic
-columns you see on [pinterest.com](pinterest.com)), or just add a little more
+layouts, recreate some of the awesome modern layouts we see (e.g. the dynamic
+columns you see on [pinterest.com](pinterest.com/)), or just add a little more
 responsiveness to make your site look good regardless of how big or how small
 your user's screen is.
